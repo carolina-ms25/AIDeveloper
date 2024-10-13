@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimación Precio Casa</title>
+    
+    <!-- Enlaces al CSS de Bootstrap (CDN) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Estimación Precio Casa en La Molina</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post" class="bg-light p-4 rounded shadow">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-block">Estimar Precio</button>
+                </form>
+            </div>
+        </div>
+
+        {% if prediccion %}
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <h2 class="text-center">El precio estimado de la casa es: <span class="badge badge-success">${{ prediccion|floatformat:2 }}</span></h2>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Enlaces a JS de Bootstrap (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
